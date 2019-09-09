@@ -30,7 +30,7 @@ DrillingRecord* DrillingRecordArray::doubleDrillingArray(DrillingRecord* current
 		newDR[i].addString[0] = data[i].getString[0];
 		newDR[i].addString[1] = data[i].getString[1];
 		for (int j = 0; j < 16; j++) {
-			newDR[i].getNum[j] = data[i].getNums[j];
+			newDR[i].getNum[j] = data[i].getNum[j];
 		}
 	}
 
