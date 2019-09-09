@@ -27,10 +27,10 @@ void DrillingRecord::addString(std::string string) {
 	return;
 }
 
-double DrillingRecord::getNum(unsigned int index) {
+double DrillingRecord::getNum(unsigned int index) const {
 	return nums[index];
 }
 
-std::string DrillingRecord::getString(unsigned int index) {
+std::string DrillingRecord::getString(unsigned int index) const {
 	return strings[index];
 }

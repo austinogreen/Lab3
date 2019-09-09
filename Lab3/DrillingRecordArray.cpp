@@ -46,6 +46,6 @@ DrillingRecord* DrillingRecordArray::doubleDrillingArray(DrillingRecord* current
 	return data;
 }
 
-DrillingRecord DrillingRecordArray::get(unsigned int index) {
+DrillingRecord DrillingRecordArray::get(unsigned int index) const {
 	return data[index];
 }

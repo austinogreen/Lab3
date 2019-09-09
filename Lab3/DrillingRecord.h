@@ -19,7 +19,7 @@ private:
 public:
 	void addNum(double num);                        // puts num in array, increments counter
 	void addString(std::string string);             // puts string in array, increments counter
-	double getNum(unsigned int index);              // returns (copy of) num at index in num array
-	std::string getString(unsigned int index);      // returns (copy of) string at index in string array
+	double getNum(unsigned int index) const;              // returns (copy of) num at index in num array
+	std::string getString(unsigned int index) const;      // returns (copy of) string at index in string array
 };
 #endif

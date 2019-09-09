@@ -16,6 +16,6 @@ public:
 	virtual ~DrillingRecordArray();                     // frees array space as object is deleted
 	void add(DrillingRecord record);                    // adds record, increments size, doubles capacity as necessary
 	DrillingRecord* doubleDrillingArray(DrillingRecord* currentDrillingArray); // Doubles size of drilling array
-	DrillingRecord get(unsigned int index);             // returns (copy of) record at index
+	DrillingRecord get(unsigned int index) const;             // returns (copy of) record at index
 };
 #endif
