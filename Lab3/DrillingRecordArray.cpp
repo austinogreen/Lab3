@@ -21,7 +21,7 @@ void DrillingRecordArray::add(DrillingRecord record) {
 }
 
 // Doubles the size of the drilling array
-DrillingRecord* DrillingRecordArray::doubleDrillingArray(DrillingRecord* currentDrillingArray) {
+DrillingRecord* DrillingRecordArray::doubleDrillingArray(DrillingRecord currentDrillingArray) {
 	// New Drilling Record with twice the capacity
 	DrillingRecord* newDR = new DrillingRecord[capacity * 2];
 

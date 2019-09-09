@@ -17,13 +17,19 @@ std::ostream& operator<<(std::ostream& os, const DrillingRecord& record) {
 
 void DrillingRecord::addNum(double num) {
 	nums[numCtr] = num;
+	if (numCtr == 15) {
+
+		numCtr = 0;
+	}
 	numCtr++;
 	return;
 }
 
 void DrillingRecord::addString(std::string string) {
 	strings[strCtr] = string;
-	strCtr++;
+	// if prev 0, = 1
+	// if prev 1, = 0
+	strCtr = (strCtr + 1) % 2;
 	return;
 }
 
