@@ -1,5 +1,4 @@
 #include "DrillingRecordArray.h"
-#include "Driller.cpp"
 
 DrillingRecordArray::DrillingRecordArray() {
 	data = new DrillingRecord[DEFAULT_ARRAY_CAPACITY];
@@ -21,16 +20,16 @@ void DrillingRecordArray::add(DrillingRecord record) {
 }
 
 // Doubles the size of the drilling array
-DrillingRecord* DrillingRecordArray::doubleDrillingArray(DrillingRecord currentDrillingArray) {
+DrillingRecord* DrillingRecordArray::doubleDrillingArray(DrillingRecord* currentDR) {
 	// New Drilling Record with twice the capacity
 	DrillingRecord* newDR = new DrillingRecord[capacity * 2];
 
 	// Copies contents of old array into the new one
-	for (int i = 0; i < capacity; i++) {
-		newDR[i].addString[0] = data[i].getString[0];
-		newDR[i].addString[1] = data[i].getString[1];
+	for (unsigned int i = 0; i < capacity; i++) {
+		newDR[i].addString(currentDR[i].getString(0));
+		newDR[i].addString(currentDR[i].getString(1));
 		for (int j = 0; j < 16; j++) {
-			newDR[i].getNum[j] = data[i].getNum[j];
+			newDR[i].addNum(currentDR[i].getNum(j));
 		}
 	}
 
@@ -38,12 +37,12 @@ DrillingRecord* DrillingRecordArray::doubleDrillingArray(DrillingRecord currentD
 	capacity *= 2;
 
 	// Deletes the old array
-	delete[] data;
+	delete[] currentDR;
 
 	// Updates old data array to new one
-	data = newDR;
+	currentDR = newDR;
 
-	return data;
+	return currentDR;
 }
 
 DrillingRecord DrillingRecordArray::get(unsigned int index) const {
