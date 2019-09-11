@@ -11,7 +11,7 @@ std::ostream& operator<<(std::ostream& os, const DrillingRecord& record) {
 		os << record.getNum(i) << ";";
 	}
 	// ensures that there isn't a semicolon at end of line
-	os << record.getNum(15) << std::endl;
+	os << record.getNum(15);
 	return os;
 }
 

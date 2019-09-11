@@ -109,6 +109,6 @@ int main() {
 
 	// Prints data (loop)
 	for (int i = (dataPoints - 1); i >= 0; i--) {
-		std::cout << drillingArray->get(i);
+		std::cout << drillingArray->get(i) << std::endl;
 	}
 }
