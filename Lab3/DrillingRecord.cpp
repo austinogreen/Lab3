@@ -2,16 +2,16 @@
 #include <iomanip>
 
 std::ostream& operator<<(std::ostream& os, const DrillingRecord& record) {
-	std::cout << record.getString(0) + ";";
-	std::cout << record.getString(1) + ";";
-	std::cout << std::fixed;
-	std::cout << std::setprecision(2);
+	os << record.getString(0) + ";";
+	os << record.getString(1) + ";";
+	os << std::fixed;
+	os << std::setprecision(2);
 
 	for (int i = 0; i < 15; i++) {
-		std::cout << record.getNum(i) << ";";
+		os << record.getNum(i) << ";";
 	}
 	// ensures that there isn't a semicolon at end of line
-	std::cout << record.getNum(15) << std::endl;
+	os << record.getNum(15) << std::endl;
 	return os;
 }
 
@@ -21,15 +21,20 @@ void DrillingRecord::addNum(double num) {
 
 		numCtr = 0;
 	}
-	numCtr++;
+	else {
+		numCtr++;
+	}
 	return;
 }
 
 void DrillingRecord::addString(std::string string) {
 	strings[strCtr] = string;
-	// if prev 0, = 1
-	// if prev 1, = 0
-	strCtr = (strCtr + 1) % 2;
+	if (strCtr == 0) {
+		strCtr++;
+	}
+	else {
+		strCtr = 0;
+	}
 	return;
 }
 

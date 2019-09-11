@@ -16,6 +16,7 @@ int main() {
 	std::string tempString;
 
 	// Time array
+	std::string date;
 	std::vector<std::string> time;
 
 	bool isValid = true;
@@ -32,7 +33,7 @@ int main() {
 
 	// Puts date in date variable
 	std::getline(std::cin, tempString, ',');
-	drillingRecord->addString(tempString);
+	date = tempString;
 
 	// While not at end of file
 	while (!tempString.empty()) {
@@ -40,9 +41,12 @@ int main() {
 		isValid = true;
 
 		// Check if date is the same
-		if (tempString.compare(drillingRecord->getString(0)) != 0) {
+		if (tempString.compare(date) != 0) {
 			std::cout << "Non-matching date stamp " << tempString << " at line " << lineCount + 1 << "." << std::endl;
 			isValid = false;
+		}
+		if (isValid) {
+			drillingRecord->addString(tempString);
 		}
 
 		std::getline(std::cin, tempString, ',');
@@ -67,9 +71,9 @@ int main() {
 
 		// puts data in data array
 		// gets first 15 data points that are separated by commas
-
 		for (i = 0; i < 15; i++) {
 			std::getline(std::cin, tempString, ',');
+
 			drillingRecord->addNum(std::stof(tempString));
 		}
 		// gets final data point with newline
@@ -85,15 +89,24 @@ int main() {
 			}
 		}
 
-
 		// Incrememnt line count
 		lineCount++;
+		
+		// If valid, increment dataPoints and add object to array
 		if (isValid) {
 			dataPoints++;
 			drillingArray->add(*drillingRecord);
 		}
+		// If not valid, delete object and recreate it
+		else {
+			delete drillingRecord;
+			drillingRecord = new DrillingRecord();
+		}
+
+		// Get next date parameter
 		std::getline(std::cin, tempString, ',');
 	}
+
 	// Prints data (loop)
 	for (int i = (dataPoints - 1); i >= 0; i--) {
 		std::cout << drillingArray->get(i);

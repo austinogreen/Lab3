@@ -1,4 +1,5 @@
 #include "DrillingRecordArray.h"
+#include "DrillingRecord.h"
 
 DrillingRecordArray::DrillingRecordArray() {
 	data = new DrillingRecord[DEFAULT_ARRAY_CAPACITY];
@@ -8,15 +9,11 @@ DrillingRecordArray::DrillingRecordArray(unsigned int capacity) {
 }
 
 DrillingRecordArray::~DrillingRecordArray() {
-	delete data;
-}
-
-// Doubles the size of the drilling array
-DrillingRecord* DrillingRecordArray::doubleDrillingArray(DrillingRecord* currentDR) {
-	// New Drilling Record with twice the capacity
-	
-
-	return currentDR;
+	if (data != NULL) {
+		delete[] data;
+	}
+	data = NULL;
+	size = 0;
 }
 
 void DrillingRecordArray::add(DrillingRecord record) {
@@ -36,7 +33,7 @@ void DrillingRecordArray::add(DrillingRecord record) {
 		// Updates the capacity
 		capacity *= 2;
 
-		// Deletes the old array
+		// Delete old data
 		delete[] data;
 
 		// Updates old data array to new one
