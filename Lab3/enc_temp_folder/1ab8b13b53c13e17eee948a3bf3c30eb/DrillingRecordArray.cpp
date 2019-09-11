@@ -11,6 +11,14 @@ DrillingRecordArray::~DrillingRecordArray() {
 	delete data;
 }
 
+void DrillingRecordArray::add(DrillingRecord record) {
+	if (size >= capacity) {
+		data = doubleDrillingArray(data);
+	}
+	data[size] = record;
+	size++;
+}
+
 // Doubles the size of the drilling array
 DrillingRecord* DrillingRecordArray::doubleDrillingArray(DrillingRecord* currentDR) {
 	// New Drilling Record with twice the capacity
@@ -35,14 +43,6 @@ DrillingRecord* DrillingRecordArray::doubleDrillingArray(DrillingRecord* current
 	currentDR = newDR;
 
 	return currentDR;
-}
-
-void DrillingRecordArray::add(DrillingRecord record) {
-	if (size >= capacity) {
-		data = doubleDrillingArray(data);
-	}
-	data[size] = record;
-	size++;
 }
 
 DrillingRecord DrillingRecordArray::get(unsigned int index) const {
